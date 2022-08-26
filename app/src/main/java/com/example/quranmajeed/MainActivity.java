@@ -1,3 +1,5 @@
+package com.example.quranmajeed;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -6,12 +8,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
-import com.example.quranmajeed.CustomAdapter;
-import com.example.quranmajeed.QDH;
-import com.example.quranmajeed.QuranArabicText;
-import com.example.quranmajeed.R;
-import com.example.quranmajeed.SurahActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,10 +29,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 int index = surahNames.SSP[i];
                 int end = surahNames.SSP[i+1];
-                QuranArabicText temp = new QuranArabicText();
-                if (index == 6342) {
-                    end = temp.QuranArabicText.length - 1;
-                }
+
                 Intent intent = new Intent(MainActivity.this, SurahActivity.class);
 
                 intent.putExtra("index", index);
