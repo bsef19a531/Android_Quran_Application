@@ -10,7 +10,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
-public class MainActivity extends AppCompatActivity {
+import com.example.quranmajeed.databinding.ActivityMainBinding;
+
+public class MainActivity extends DrawerBaseActivity {
+
+
+    ActivityMainBinding activityMainBinding;
 
     ListView lst;
 
@@ -20,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(activityMainBinding.getRoot());
 
         lst = findViewById(R.id.main_list);
         QDH surahNames = new QDH();
