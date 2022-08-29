@@ -3,28 +3,34 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/menu_item_bookmark"
-
+            android:src="@drawable/bookmark"
             android:title="BookMarks" />
 
         <item
         android:id="@+id/menu_item_facts"
-
+        android:src="@drawable/balance"
         android:title="Facts" />
 
         <item
             android:id="@+id/menu_item_translation_language"
-
             android:title="Translation Language" />
 
         <item
             android:id="@+id/menu_item_surah_language"
-
             android:title="Surah Language" />
 
         <item
             android:id="@+id/menu_item_Search"
-
+            android:src="@drawable/search"
             android:title="Search" />
+
+    </group>
+
+    <group >
+        <item
+            android:id="@+id/item_info"
+            android:title="Info"
+            android:src="@drawable/info" />
 
     </group>
 
