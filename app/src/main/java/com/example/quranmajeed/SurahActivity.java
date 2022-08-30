@@ -7,15 +7,23 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.quranmajeed.databinding.ActivitySurahBinding;
+
 import java.util.ArrayList;
 
-public class SurahActivity extends AppCompatActivity {
+public class SurahActivity extends DrawerBaseActivity {
+
+    ActivitySurahBinding surahBinding;
 
     ListView lst;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_surah);
+
+        //Adding Drawer to Activity
+        surahBinding = ActivitySurahBinding.inflate(getLayoutInflater());
+        setContentView(surahBinding.getRoot());
 
         // GET value of Surah from MainActivity through Intent
         int surahNumber = getIntent().getIntExtra("number", 1);
@@ -26,7 +34,7 @@ public class SurahActivity extends AppCompatActivity {
         //Getting data in Arraylist from DB
         ArrayList<SurahData> surah = dbHelper.getSurahAyahs(surahNumber);
 
-        //ArrayAdapter<String> adapter = new ArrayAdapter<>(SurahActivity.this, android.R.layout.simple_list_item_1, surah);
+        //Populationg data in Custom List
         lst = findViewById(R.id.list_surah);
         CustomSurahAdapter adapter = new CustomSurahAdapter(this, R.layout.custom_ayah_list,  surah );
         lst.setAdapter(adapter);
