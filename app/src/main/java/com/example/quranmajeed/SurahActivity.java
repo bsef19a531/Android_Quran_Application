@@ -21,9 +21,14 @@ public class SurahActivity extends DrawerBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_surah);
 
-        //Adding Drawer to Activity
+
+
+        //Adding Drawer to Activity and Allocating title
         surahBinding = ActivitySurahBinding.inflate(getLayoutInflater());
         setContentView(surahBinding.getRoot());
+
+        //Allocating title
+        allocateActivityTitle("Surah");
 
         // GET value of Surah from MainActivity through Intent
         int surahNumber = getIntent().getIntExtra("number", 1);
