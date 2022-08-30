@@ -12,14 +12,15 @@ import android.widget.ListView;
 
 import com.example.quranmajeed.databinding.ActivityMainBinding;
 
+import java.io.IOException;
+
 public class MainActivity extends DrawerBaseActivity {
 
 
     ActivityMainBinding activityMainBinding;
+    DBHelper dbHelper;
 
     ListView lst;
-
-    Button splash;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,23 @@ public class MainActivity extends DrawerBaseActivity {
 
         activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(activityMainBinding.getRoot());
+
+
+        //Importing DB
+        dbHelper = new DBHelper(getApplicationContext());
+        if(!dbHelper.isDataBaseExists())
+        {
+            try
+            {
+                dbHelper.importDataBaseFromAssets();
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+        }
+
+
 
         lst = findViewById(R.id.main_list);
         QDH surahNames = new QDH();
