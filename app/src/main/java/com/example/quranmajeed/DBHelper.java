@@ -1,6 +1,7 @@
 package com.example.quranmajeed;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
@@ -10,6 +11,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 
 public class DBHelper extends SQLiteOpenHelper {
     Context context;
@@ -60,7 +62,25 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    public ArrayList<SurahData> getSurahNames() throws  Exception
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
 
+        ArrayList<SurahData> surahList = new ArrayList<>();
+
+        Cursor cs = db.rawQuery("SELECT * FROM tsurah", null );
+
+        // moving our cursor to first position.
+        if (cs.moveToFirst()) {
+            do {
+                surahList.add(new SurahData(cs.getString(0), cs.getString(4), cs.getString(2), cs.getString(3) ));
+            } while (cs.moveToNext());
+        }
+
+        cs.close();
+        return surahList;
+
+    }
 
 
 

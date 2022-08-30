@@ -7,18 +7,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
-public class CustomAdapter extends ArrayAdapter<String> {
+public class CustomAdapter extends ArrayAdapter<SurahData> {
 
-    String[] data;
+    ArrayList<SurahData> data;
 
-    public CustomAdapter(@NonNull Context context, int resource, String[] data) {
-        super(context, resource, data);
+    public CustomAdapter(@NonNull Context context, int resource, ArrayList<SurahData> data) {
+        super(context, R.layout.custom_list, data);
         this.data = data;
     }
 
@@ -28,7 +29,10 @@ public class CustomAdapter extends ArrayAdapter<String> {
 
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View view = inflater.inflate(R.layout.custom_list, null, true);
-        ((TextView) view.findViewById(R.id.custom_txt)).setText(data[position]);
+//        ((TextView) view.findViewById(R.id.custom_txt)).setText(data.get(position).surahNameEnglish);
+        TextView txt = view.findViewById(R.id.custom_txt) ;
+//        Toast.makeText(getContext(), data.get(position).surahNameUrdu , Toast.LENGTH_LONG).show();
+        txt.setText(data.get(position).surahNameUrdu);
         return view;
     }
 }

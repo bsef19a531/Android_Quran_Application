@@ -31,8 +31,8 @@ public class SurahActivity extends AppCompatActivity {
         }
 
 //        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,  data);
-        CustomAdapter adapter = new CustomAdapter(this, R.layout.custom_list,  (data.toArray(new String[0]) ) );
-        lst.setAdapter(adapter);
+//        CustomAdapter adapter = new CustomAdapter(this, R.layout.custom_list,  (data.toArray(new String[0]) ) );
+//        lst.setAdapter(adapter);
 
     }
 }
