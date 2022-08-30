@@ -7,8 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 //import android.widget.ArrayAdapter;
-//import android.widget.Button;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 //import android.widget.Toast;
 
 import com.example.quranmajeed.databinding.ActivityMainBinding;
@@ -24,6 +25,7 @@ public class MainActivity extends DrawerBaseActivity {
     ArrayList<SurahData> surahNamesList;
 
     ListView lst;
+    Button searchBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +73,25 @@ public class MainActivity extends DrawerBaseActivity {
                 Intent intent = new Intent(MainActivity.this, SurahActivity.class);
                 intent.putExtra("number", i+1);
                 startActivity(intent);
+            }
+        });
+
+        //Implementing Search Button Functionality
+        searchBtn = findViewById(R.id.searchBtn);
+
+        searchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TextView searchBarTxt = findViewById(R.id.searchBarTxt);
+
+                //Getting data in ArrayList
+                ArrayList<SurahData> searchResult = dbHelper.getSearchResult(searchBarTxt.getText().toString());
+
+                //Populating data in Custom List
+                lst = findViewById(R.id.main_list);
+                CustomAdapter adapter = new CustomAdapter(MainActivity.this, R.layout.custom_list, searchResult);
+                lst.setAdapter(adapter);
+
             }
         });
 

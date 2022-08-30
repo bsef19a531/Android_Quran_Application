@@ -104,6 +104,25 @@ public class DBHelper extends SQLiteOpenHelper {
         return ayah;
     }
 
+    public ArrayList<SurahData> getSearchResult(String search)
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        ArrayList<SurahData> searchResult = new ArrayList<>();
+
+        Cursor cs = db.rawQuery("SELECT * FROM tsurah WHERE SurahNameE LIKE '%" + search + "%'", null);
+        if (cs.moveToFirst()) {
+            do {
+                searchResult.add(new SurahData(cs.getString(0), cs.getString(4), cs.getString(2), cs.getString(3) ));
+            } while (cs.moveToNext());
+        }
+
+        cs.close();
+        db.close();
+
+        return searchResult;
+    }
+
 
 
 
