@@ -15,4 +15,13 @@ public class SurahData {
         this.Nazool = Nazool;
     }
 
+    SurahData(String surahNameUrdu, String surahNameEnglish)
+    {
+      this.id = "";
+      this.Nazool = "";
+      this.surahNameUrdu = surahNameUrdu;
+      this.surahNameEnglish = surahNameEnglish;
+    }
+
+
 }

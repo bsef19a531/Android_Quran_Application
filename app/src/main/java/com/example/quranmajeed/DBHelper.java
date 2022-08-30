@@ -78,8 +78,30 @@ public class DBHelper extends SQLiteOpenHelper {
         }
 
         cs.close();
+        db.close();
+
         return surahList;
 
+    }
+
+    public ArrayList<SurahData> getSurahAyahs(int surahNumber)
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        ArrayList<SurahData> ayah = new ArrayList<>();
+        Cursor cs = db.rawQuery("SELECT * FROM tayah WHERE SuraID = " + surahNumber, null);
+
+        // moving our cursor to first position.
+        if (cs.moveToFirst()) {
+            do {
+                ayah.add(new SurahData(cs.getString(4), cs.getString(3)));
+            } while (cs.moveToNext());
+        }
+
+        cs.close();
+        db.close();
+
+        return ayah;
     }
 
 

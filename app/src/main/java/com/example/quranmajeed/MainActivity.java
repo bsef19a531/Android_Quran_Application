@@ -6,10 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
+//import android.widget.ArrayAdapter;
+//import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
+//import android.widget.Toast;
 
 import com.example.quranmajeed.databinding.ActivityMainBinding;
 
@@ -53,7 +53,6 @@ public class MainActivity extends DrawerBaseActivity {
         try
         {
             surahNamesList = dbHelper.getSurahNames();
-//           Toast.makeText(getApplicationContext(), surahNamesList.get(1).surahNameEnglish +" "+ surahNamesList.get(1).Nazool, Toast.LENGTH_LONG).show();
 
         } catch (Exception e)
         {
@@ -64,6 +63,16 @@ public class MainActivity extends DrawerBaseActivity {
         lst = findViewById(R.id.main_list);
         CustomAdapter adapter = new CustomAdapter(this, R.layout.custom_list, surahNamesList);
         lst.setAdapter(adapter);
+
+        // Setting onCLick Listener for Items of List
+        lst.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(MainActivity.this, SurahActivity.class);
+                intent.putExtra("number", i+1);
+                startActivity(intent);
+            }
+        });
 
 
 //        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, surahNamesList);
