@@ -30,9 +30,14 @@ public class CustomAdapter extends ArrayAdapter<SurahData> {
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View view = inflater.inflate(R.layout.custom_list, null, true);
 //        ((TextView) view.findViewById(R.id.custom_txt)).setText(data.get(position).surahNameEnglish);
-        TextView txt = view.findViewById(R.id.custom_txt) ;
-//        Toast.makeText(getContext(), data.get(position).surahNameUrdu , Toast.LENGTH_LONG).show();
-        txt.setText(data.get(position).surahNameUrdu);
+        TextView txtUrdu = view.findViewById(R.id.urdu_txt) ;
+//        TextView txtEng = view.findViewById(R.id.eng_txt) ;
+        TextView txtId = view.findViewById(R.id.id_txt) ;
+//        TextView txtNazool = view.findViewById(R.id.nazool_txt) ;
+        txtUrdu.setText(data.get(position).surahNameUrdu);
+//        txtEng.setText(data.get(position).surahNameEnglish);
+        txtId.setText(data.get(position).id);
+//        txtNazool.setText(data.get(position).Nazool);
         return view;
     }
 }
