@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     tools:viewBindingIgnore="false"
+    android:focusableInTouchMode="true"
     >
 
     <EditText
@@ -14,7 +15,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:focusable="auto"
         android:hint="Search Surah Name"
         android:inputType="textPersonName"
         android:textColorHighlight="#000000"
