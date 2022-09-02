@@ -18,6 +18,8 @@ import com.example.quranmajeed.databinding.ActivityMainBinding;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class MainActivity extends DrawerBaseActivity {
 
@@ -63,6 +65,8 @@ public class MainActivity extends DrawerBaseActivity {
         }
 
         // Setting Recycler View
+
+        Collections.reverse(surahNamesList);
 
         recyclerView = findViewById(R.id.main_list);
 
