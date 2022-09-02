@@ -17,15 +17,11 @@
         android:icon="@drawable/balance"
         android:title="Facts" />
 
-        <item
-            android:id="@+id/menu_item_translation_language"
-            android:title="Translation Language"
-            android:icon="@drawable/ic_baseline_library_books_24"/>
+       <item android:id="@+id/menu_item_setting"
+           android:icon="@drawable/ic_baseline_settings_24"
+           android:title="Setting"
+           />
 
-        <item
-            android:id="@+id/menu_item_surah_language"
-            android:title="Surah Language"
-            android:icon="@drawable/ic_baseline_book_24"/>
 
         <item
             android:id="@+id/menu_item_Search"

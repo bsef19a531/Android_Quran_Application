@@ -57,6 +57,7 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
             case R.id.menu_item_home:
                 Intent intent = new Intent(this.getApplicationContext(), MainActivity.class);
                 startActivity(intent);
+                finish();
                 overridePendingTransition(0,0);
                 break;
             case R.id.menu_item_bookmark:
@@ -67,6 +68,11 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
                 TextView searchBarTxt = findViewById(R.id.searchBarTxt);
                 searchBarTxt.requestFocus();
                 showSoftKeyboard(searchBarTxt);
+                break;
+            case R.id.menu_item_setting:
+                Intent intent1 = new Intent(this.getApplicationContext(), SettingActivity.class);
+                startActivity(intent1);
+                overridePendingTransition(0,0);
                 break;
 
         }
