@@ -76,6 +76,27 @@ public class MainActivity extends DrawerBaseActivity {
 
         recyclerView.setAdapter(adapter);
 
+
+        //////////////////////////////////////
+
+        searchBtn = findViewById(R.id.searchBtn);
+
+        searchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TextView searchBarTxt = findViewById(R.id.searchBarTxt);
+
+                ArrayList<SurahData> searchResult = dbHelper.getSearchResult(searchBarTxt.getText().toString());
+                Collections.reverse(searchResult);
+
+                RecyclerViewAdapter adapter = new RecyclerViewAdapter(MainActivity.this, searchResult);
+
+                recyclerView.setAdapter(adapter);
+
+
+            }
+        });
+
 //        // Setting the List to Adapter
 //        lst = findViewById(R.id.main_list);
 //        CustomAdapter adapter = new CustomAdapter(this, R.layout.custom_list, surahNamesList);
