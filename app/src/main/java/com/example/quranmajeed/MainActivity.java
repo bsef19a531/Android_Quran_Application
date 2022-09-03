@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 //import android.widget.Toast;
 
 import com.example.quranmajeed.databinding.ActivityMainBinding;
@@ -21,7 +22,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
-public class MainActivity extends DrawerBaseActivity {
+public class MainActivity extends DrawerBaseActivity implements RecyclerViewAdapter.onItemListener{
 
 
     ActivityMainBinding activityMainBinding;
@@ -66,13 +67,13 @@ public class MainActivity extends DrawerBaseActivity {
 
         // Setting Recycler View
 
-        Collections.reverse(surahNamesList);
+        //Collections.reverse(surahNamesList);
 
         recyclerView = findViewById(R.id.main_list);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.VERTICAL, true));
+        recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.VERTICAL, false));
 
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, surahNamesList);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, surahNamesList,this);
 
         recyclerView.setAdapter(adapter);
 
@@ -87,9 +88,9 @@ public class MainActivity extends DrawerBaseActivity {
                 TextView searchBarTxt = findViewById(R.id.searchBarTxt);
 
                 ArrayList<SurahData> searchResult = dbHelper.getSearchResult(searchBarTxt.getText().toString());
-                Collections.reverse(searchResult);
+                //Collections.reverse(searchResult);
 
-                RecyclerViewAdapter adapter = new RecyclerViewAdapter(MainActivity.this, searchResult);
+                RecyclerViewAdapter adapter = new RecyclerViewAdapter(MainActivity.this, searchResult, MainActivity.this::onItemClick);
 
                 recyclerView.setAdapter(adapter);
 
@@ -135,5 +136,20 @@ public class MainActivity extends DrawerBaseActivity {
 
 
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+    }
+
+
+    @Override
+    public void onItemClick(int position) {
+        //Toast.makeText(getApplicationContext(), "Clicked", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(MainActivity.this, SurahActivity.class);
+                intent.putExtra("number", position+1);
+                startActivity(intent);
     }
 }

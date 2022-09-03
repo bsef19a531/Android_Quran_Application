@@ -17,11 +17,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     ArrayList<SurahData> surahData;
     Context context;
     LanguageController languageController = new LanguageController() ;
+    onItemListener itemListener;
 
-    RecyclerViewAdapter(Context context, ArrayList<SurahData> surahData)
+    RecyclerViewAdapter(Context context, ArrayList<SurahData> surahData, onItemListener itemListener)
     {
         this.context = context;
         this.surahData = surahData;
+        this.itemListener = itemListener;
     }
 
     @NonNull
@@ -29,7 +31,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_list, parent, false);
-        viewHolder vh = new viewHolder(view);
+        viewHolder vh = new viewHolder(view, itemListener);
 
         return vh;
     }
@@ -60,14 +62,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return surahData.size();
     }
 
-    public class viewHolder extends RecyclerView.ViewHolder{
+    public class viewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView txtUrdu;
         TextView txtEng;
         TextView txtId2;
         TextView txtId;
+        onItemListener itemListener;
 
-        public viewHolder(@NonNull View itemview)
+        public viewHolder(@NonNull View itemview, onItemListener itemListener)
         {
             super(itemview);
 
@@ -75,7 +78,20 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             txtId = itemview.findViewById(R.id.id_txt) ;
             txtEng = itemview.findViewById(R.id.eng_txt);
             txtId2 = itemview.findViewById(R.id.id_txt2);
+            this.itemListener = itemListener;
+            itemview.setOnClickListener(this);
 
         }
+
+
+        @Override
+        public void onClick(View view) {
+            itemListener.onItemClick(getAdapterPosition());
+        }
+    }
+
+    public interface onItemListener{
+        void onItemClick(int position);
+
     }
 }

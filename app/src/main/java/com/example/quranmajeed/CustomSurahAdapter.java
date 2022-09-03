@@ -29,7 +29,7 @@ public class CustomSurahAdapter extends ArrayAdapter<SurahData> {
         View view = inflater.inflate(R.layout.custom_ayah_list, null, true);
 
         TextView arabicTxt = view.findViewById(R.id.arabic_txt);
-        TextView transTxt = view.findViewById(R.id.translation_txt);
+        TextView transTxt = view.findViewById(R.id.translation_txt_urdu);
 
         arabicTxt.setText(data.get(position).surahNameEnglish);
         transTxt.setText(data.get(position).surahNameUrdu);

@@ -22,10 +22,10 @@ public class SettingActivity extends DrawerBaseActivity {
 
         allocateActivityTitle("Settings");
 
-
+        LanguageController languageController = new LanguageController();
 
         RadioGroup rg = findViewById(R.id.surahRdGrp);
-        LanguageController languageController = new LanguageController();
+
         rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
@@ -36,6 +36,21 @@ public class SettingActivity extends DrawerBaseActivity {
                         break;
                     case R.id.surahRdBtnEnglish:
                         languageController.setSurahLanguage(true);
+                }
+            }
+        });
+
+        RadioGroup transRd = findViewById(R.id.translationRdGrp);
+        transRd.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i)
+                {
+                    case R.id.transRdBtnUrdu:
+                        languageController.setTranslationLanguage(false);
+                        break;
+                    case R.id.transRdBtnEnglish:
+                        languageController.setTranslationLanguage(true);
                 }
             }
         });

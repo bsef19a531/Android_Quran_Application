@@ -1,6 +1,8 @@
 package com.example.quranmajeed;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,12 +12,14 @@ import android.widget.ListView;
 import com.example.quranmajeed.databinding.ActivitySurahBinding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class SurahActivity extends DrawerBaseActivity {
 
     ActivitySurahBinding surahBinding;
 
-    ListView lst;
+    RecyclerView recyclerView;
+//    ListView lst;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,11 +42,18 @@ public class SurahActivity extends DrawerBaseActivity {
 
         //Getting data in Arraylist from DB
         ArrayList<SurahData> surah = dbHelper.getSurahAyahs(surahNumber);
+        //Collections.reverse(surah);
 
-        //Populationg data in Custom List
-        lst = findViewById(R.id.list_surah);
-        CustomSurahAdapter adapter = new CustomSurahAdapter(this, R.layout.custom_ayah_list,  surah );
-        lst.setAdapter(adapter);
+        //Populating data in Recycler View
+        recyclerView = findViewById(R.id.list_surah);
+        recyclerView.setLayoutManager(new LinearLayoutManager(SurahActivity.this, LinearLayoutManager.VERTICAL, false));
+        RecyclerSurahAdapter adapter = new RecyclerSurahAdapter(this, surah);
+        recyclerView.setAdapter(adapter);
+
+//        //Populationg data in Custom List
+//        lst = findViewById(R.id.list_surah);
+//        CustomSurahAdapter adapter = new CustomSurahAdapter(this, R.layout.custom_ayah_list,  surah );
+//        lst.setAdapter(adapter);
 
 
     }}
