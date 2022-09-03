@@ -72,6 +72,7 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
             case R.id.menu_item_setting:
                 Intent intent1 = new Intent(this.getApplicationContext(), SettingActivity.class);
                 startActivity(intent1);
+                finish();
                 overridePendingTransition(0,0);
                 break;
 

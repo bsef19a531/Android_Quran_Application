@@ -40,7 +40,7 @@
 
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/translationRdGrp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -53,10 +53,10 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/surahRdGrp" />
 
     <RadioGroup
-        android:id="@+id/radioGroup"
+        android:id="@+id/surahRdGrp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -69,7 +69,7 @@
             android:id="@+id/surahRdBtnUrdu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:checked="true"
+            android:checked="false"
             android:text="Urdu"
             android:textSize="20sp"
             app:buttonTint="#000000" />
@@ -89,13 +89,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.054"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6">
+        app:layout_constraintTop_toBottomOf="@+id/translationRdGrp">
 
         <RadioButton
             android:id="@+id/transRdBtnUrdu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:checked="true"
+            android:checked="false"
             android:text="Urdu"
             android:textColor="#050505"
             android:textSize="20sp"
